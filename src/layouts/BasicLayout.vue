@@ -12,20 +12,12 @@
     </template>
   </van-nav-bar>
   <div>
-    <template v-if="active==='home'">
-      <Home/>
-    </template>
-    <template v-if="active==='team'">
-      <Team/>
-    </template>
-    <template v-if="active==='user'">
-      <User/>
-    </template>
+    <router-view/>
   </div>
-  <van-tabbar v-model="active" @change="onChange">
-    <van-tabbar-item icon="home-o" name="home">主页</van-tabbar-item>
-    <van-tabbar-item icon="search" name="team">队伍</van-tabbar-item>
-    <van-tabbar-item icon="setting-o" name="user">个人</van-tabbar-item>
+  <van-tabbar v-model="active" @change="onChange" route>
+    <van-tabbar-item to="/" icon="home-o" name="home">主页</van-tabbar-item>
+    <van-tabbar-item to="/team" icon="search" name="team">队伍</van-tabbar-item>
+    <van-tabbar-item to="/user" icon="setting-o" name="user">个人</van-tabbar-item>
   </van-tabbar>
 
 </template>
@@ -33,12 +25,15 @@
 import {ref} from "vue";
 import {showToast} from 'vant';
 import 'vant/es/toast/style';
-import Home from "../pages/Home.vue";
-import Team from "../pages/Team.vue";
-import User from "../pages/User.vue";
+import {useRouter} from "vue-router";
+const router = useRouter();
 
-const onClickLeft = () => alert("left")
-const onClickRight = () => alert("right")
+const onClickLeft = () => {
+  router.push('/');
+}
+const onClickRight = () => {
+  router.push('/search');
+}
 const active = ref("home");
 const onChange = (index) => showToast(`${index}页`);
 </script>
