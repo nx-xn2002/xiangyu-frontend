@@ -25,12 +25,15 @@
       v-model:main-active-index="activeIndex"
       :items="tagList"
   />
-
+  <div style="padding: 12px">
+    <van-button block type="primary" @click="doSearchResult">搜索</van-button>
+  </div>
 </template>
 <script setup lang="ts">
 import {ref} from 'vue';
-import {showToast} from 'vant';
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const searchText = ref('');
 //搜索
 const onSearch = () => {
@@ -78,12 +81,19 @@ const originTagList = [
   {
     text: '方向',
     children: [
-      {text: 'Java', id: 'Java'},
-      {text: 'C++', id: 'C++'},
-      {text: 'Go', id: 'Go'},
+      {text: 'java', id: 'java'},
+      {text: 'c++', id: 'c++'},
+      {text: 'go', id: 'go'},
     ],
   },
 ]
 let tagList = ref(originTagList);
-
+const doSearchResult = () => {
+  router.push({
+    path: '/user/list',
+    query: {
+      tags: activeIds.value,
+    }
+  })
+}
 </script>
