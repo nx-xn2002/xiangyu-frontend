@@ -1,6 +1,6 @@
 <template>
   <user-card-list :user-list="userList"/>
-  <van-empty v-if="!userList||userList.length<1" description="网络异常"/>
+  <van-empty v-if="!userList||userList.length<1" description="主页推荐页"/>
 </template>
 <script setup>
 import {useRoute} from "vue-router";
@@ -14,7 +14,7 @@ const route = useRoute();
 onMounted(async () => {
   const userListData = await myAxios.get('/user/recommend', {
     params: {
-      pageSize: 8,
+      pageSize: 20,
       pageNum: 1,
     },
   })
