@@ -1,6 +1,9 @@
 <template>
   <van-form @submit="onSubmit">
     <van-field
+        rows="1"
+        autosize
+        type="textarea"
         v-model="editUser.currentValue"
         :name="editUser.editKey"
         :label="editUser.editName"
@@ -17,7 +20,7 @@
 
 <script setup lang="ts">
 import {useRoute, useRouter} from "vue-router";
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import myAxios from "../plugins/myAxios.js";
 import {showFailToast, showSuccessToast} from "vant";
 import {getCurrentUser} from "../services/user.ts";

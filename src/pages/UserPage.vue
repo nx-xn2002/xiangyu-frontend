@@ -12,6 +12,8 @@
           :src="user.avatarUrl"
       />
     </van-cell>
+    <van-cell title="个人简介" is-link to="/user/edit" value=""
+              @click="toEdit('profile','个人简介',user.profile)"/>
     <van-cell title="性别" is-link to="/user/edit" :value="user.gender===0?'男':'女'"
               @click="toEdit('gender','性别',user.gender)"/>
     <van-cell title="电话" is-link to="/user/edit" :value="user.phone" @click="toEdit('phone','电话',user.phone)"/>
