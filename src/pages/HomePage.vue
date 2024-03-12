@@ -1,31 +1,34 @@
 <template>
   <user-card-list :user-list="userList"/>
-  <van-empty v-if="!userList||userList.length<1" description="主页推荐页"/>
+  <van-empty v-if="!userList || userList.length < 1" description="数据为空"/>
 </template>
+
 <script setup>
+import {onMounted, ref} from 'vue';
 import {useRoute} from "vue-router";
-import {onMounted, ref} from "vue";
-import myAxios from '../plugins/myAxios.js'
+import myAxios from "../plugins/myAxios";
 import {showFailToast, showSuccessToast} from "vant";
 import UserCardList from "../components/UserCardList.vue";
 
-const userList = ref([])
 const route = useRoute();
+
+const userList = ref([]);
+
 onMounted(async () => {
   const userListData = await myAxios.get('/user/recommend', {
     params: {
-      pageSize: 20,
+      pageSize: 8,
       pageNum: 1,
     },
   })
       .then(function (response) {
-        console.log('/user/recommend success', response);
-        showSuccessToast('为您推荐以下用户');
-        return response.data?.records;
+        console.log('/user/recommend succeed', response);
+        showSuccessToast('请求成功');
+        return response?.data?.records;
       })
       .catch(function (error) {
-        console.error('/user/recommend failed', error);
-        showFailToast('网络请求失败');
+        console.error('/user/recommend error', error);
+        showFailToast('请求失败');
       })
   if (userListData) {
     userListData.forEach(user => {
@@ -36,6 +39,9 @@ onMounted(async () => {
     userList.value = userListData;
   }
 })
-const {tags} = route.query;
 
 </script>
+
+<style scoped>
+
+</style>
