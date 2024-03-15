@@ -4,7 +4,7 @@
   >
     <van-card
         v-for="team in props.teamList"
-        :thumb="ikun"
+        :thumb="logo"
         :desc="team.description"
         :title="`${team.name}`"
     >
@@ -27,15 +27,17 @@
         </div>
       </template>
       <template #footer>
-        <van-button size="small" type="primary" plain @click="doJoinTeam(team.id)">加入队伍</van-button>
+        <van-button size="small" type="primary" v-if="team.userId !== currentUser?.id && !team.hasJoin" plain
+                    @click="doJoinTeam(team.id)">加入队伍
+        </van-button>
         <van-button v-if="team.userId === currentUser?.id" size="small" plain
                     @click="doUpdateTeam(team.id)">更新队伍
         </van-button>
-        <!--        todo 仅加入队伍可见 -->
-        <van-button  size="small" plain
-                     @click="doQuitTeam(team.id)">退出队伍
+        <!-- 仅加入队伍可见 -->
+        <van-button v-if="team.userId !== currentUser?.id && team.hasJoin" size="small" plain
+                    @click="doQuitTeam(team.id)">退出队伍
         </van-button>
-        <van-button v-if="team.userId === currentUser?.id" size="small" plain
+        <van-button v-if="team.userId === currentUser?.id" size="small" type="danger" plain
                     @click="doDeleteTeam(team.id)">解散队伍
         </van-button>
       </template>
@@ -47,9 +49,9 @@
 <script setup lang="ts">
 import {TeamType} from "../models/team";
 import {teamStatusEnum} from "../constants/team";
-import ikun from '../assets/ikun.png';
+import logo from '../assets/logo.svg';
 import myAxios from "../plugins/myAxios";
-import {showFailToast, showSuccessToast} from "vant";
+import {Toast} from "vant";
 import {onMounted, ref} from "vue";
 import {getCurrentUser} from "../services/user";
 import {useRouter} from "vue-router";
@@ -80,9 +82,9 @@ const doJoinTeam = async (id: number) => {
     teamId: id
   });
   if (res?.code === 0) {
-    showSuccessToast('加入成功');
+    Toast.success('加入成功');
   } else {
-    showFailToast('加入失败' + (res.description ? `，${res.description}` : ''));
+    Toast.fail('加入失败' + (res.description ? `，${res.description}` : ''));
   }
 }
 
@@ -108,9 +110,9 @@ const doQuitTeam = async (id: number) => {
     teamId: id
   });
   if (res?.code === 0) {
-    showSuccessToast('操作成功');
+    Toast.success('操作成功');
   } else {
-    showFailToast('操作失败' + (res.description ? `，${res.description}` : ''));
+    Toast.fail('操作失败' + (res.description ? `，${res.description}` : ''));
   }
 }
 
@@ -123,9 +125,9 @@ const doDeleteTeam = async (id: number) => {
     id,
   });
   if (res?.code === 0) {
-    showSuccessToast('操作成功');
+    Toast.success('操作成功');
   } else {
-    showFailToast('操作失败' + (res.description ? `，${res.description}` : ''));
+    Toast.fail('操作失败' + (res.description ? `，${res.description}` : ''));
   }
 }
 
