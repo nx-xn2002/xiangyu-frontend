@@ -8,9 +8,9 @@ import SearchPage from "../pages/SearchPage.vue";
 import SearchResultPage from "../pages/SearchResultPage.vue";
 import UserEditPage from "../pages/UserEditPage.vue";
 import UserLoginPage from "../pages/UserLoginPage.vue";
+import HomePage from "../pages/HomePage.vue";
 import TeamAddPage from "../pages/TeamAddPage.vue";
 import TeamUpdatePage from "../pages/TeamUpdatePage.vue";
-import HomePage from "../pages/HomePage.vue";
 
 
 const routes = [

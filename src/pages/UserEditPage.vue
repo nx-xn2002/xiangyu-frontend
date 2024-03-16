@@ -18,7 +18,6 @@
 import {useRoute, useRouter} from "vue-router";
 import {ref} from "vue";
 import myAxios from "../plugins/myAxios";
-import {Toast} from "vant";
 import {getCurrentUser} from "../services/user";
 
 const route = useRoute();
@@ -34,7 +33,7 @@ const onSubmit = async () => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
-    Toast.fail('用户未登录');
+    showFailToast('用户未登录');
     return;
   }
 
@@ -46,10 +45,10 @@ const onSubmit = async () => {
   })
   console.log(res, '更新请求');
   if (res.code === 0 && res.data > 0) {
-    Toast.success('修改成功');
+    showSuccessToast('修改成功');
     router.back();
   } else {
-    Toast.fail('修改错误');
+    showFailToast('修改错误');
   }
 };
 

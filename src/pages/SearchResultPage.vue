@@ -3,11 +3,11 @@
   <van-empty v-if="!userList || userList.length < 1" description="搜索结果为空" />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {onMounted, ref} from 'vue';
 import {useRoute} from "vue-router";
 import myAxios from "../plugins/myAxios";
-import {Toast} from "vant";
+import {showFailToast, Toast} from "vant";
 import qs from 'qs';
 import UserCardList from "../components/UserCardList.vue";
 
@@ -31,7 +31,7 @@ onMounted(async () => {
       })
       .catch(function (error) {
         console.error('/user/search/tags error', error);
-        Toast.fail('请求失败');
+        showFailToast('请求失败');
       })
   console.log(userListData)
   if (userListData) {

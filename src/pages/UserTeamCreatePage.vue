@@ -7,13 +7,13 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
 import {useRouter} from "vue-router";
+
 import {onMounted, ref} from "vue";
 import myAxios from "../plugins/myAxios";
 import TeamCardList from "./TeamCardList.vue";
-import {showFailToast} from "vant";
 
 const router = useRouter();
 const searchText = ref('');
