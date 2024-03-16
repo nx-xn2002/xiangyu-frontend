@@ -46,12 +46,26 @@ const originTagList = [{
   {
     text: '年级',
     children: [
+      {text: '初中', id: '初中'},
+      {text: '高中', id: '高中'},
       {text: '大一', id: '大一'},
       {text: '大二', id: '大二'},
-      {text: '大3', id: '大3'},
-      {text: '大4', id: '大4'},
-      {text: '大5', id: '大5aaaaaaa'},
-      {text: '大6', id: '大6aaaaaaa'},
+      {text: '大三', id: '大三'},
+      {text: '大四', id: '大四'},
+      {text: '研一', id: '研一'},
+      {text: '研二', id: '研二'},
+      {text: '研三', id: '研三'},
+    ],
+  },
+  {
+    text: '兴趣方向',
+    children: [
+      {text: 'c++', id: 'c++'},
+      {text: 'go', id: 'go'},
+      {text: 'python', id: 'python'},
+      {text: 'java', id: 'java'},
+      {text: 'javascript', id: 'javascript'},
+      {text: 'rust', id: 'rust'},
     ],
   },
 ]
