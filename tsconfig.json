@@ -23,7 +23,8 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": false,
     "allowJs": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*.ts",

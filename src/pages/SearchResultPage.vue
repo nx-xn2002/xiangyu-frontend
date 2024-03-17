@@ -1,13 +1,13 @@
 <template>
-  <user-card-list :user-list="userList" />
-  <van-empty v-if="!userList || userList.length < 1" description="搜索结果为空" />
+  <user-card-list :user-list="userList"/>
+  <van-empty v-if="!userList || userList.length < 1" description="搜索结果为空"/>
 </template>
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
 import {useRoute} from "vue-router";
 import myAxios from "../plugins/myAxios";
-import {showFailToast, Toast} from "vant";
+import {showFailToast} from "vant";
 import qs from 'qs';
 import UserCardList from "../components/UserCardList.vue";
 

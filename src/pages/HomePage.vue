@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import {ref, watchEffect} from 'vue';
 import myAxios from "../plugins/myAxios";
-import {showFailToast, showSuccessToast, Toast} from "vant";
+import {showFailToast} from "vant";
 import UserCardList from "../components/UserCardList.vue";
 import {UserType} from "../models/user";
 
