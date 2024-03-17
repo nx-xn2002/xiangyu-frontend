@@ -1,18 +1,50 @@
-# Vue 3 + TypeScript + Vite
+# XIANGYU - 学习伙伴匹配系统  
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 项目介绍
 
-## Recommended IDE Setup
+基于 Vue 3 + Spring Boot 的移动端网站，致力于为大家找到志同道合的学习伙伴，实现了用户管理、按标签检索用户、推荐相似用户、组队等功能
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support For `.vue` Imports in TS
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## 技术栈
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### 前端
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+1. Vue 3 开发框架（提高页面开发效率）
+2. Vant UI（基于Vue的移动端组件库）
+3. Vite（打包工具，快）
+4. Nginx来进行单机部署
+
+
+
+### 后端
+
+1. Java + SpringBoot
+2. SpringMVC + MyBatis + MyBatis Plus
+3. MySQL
+4. Redis缓存
+5. Swagger + Knife4j 接口文档
+
+
+
+## 功能展示
+
+### 首页默认推荐用户
+
+![image-20240317141615151](images/image-20240317141615151.png)
+
+
+
+### 按标签匹配度进行匹配推荐和排序
+
+![image-20240317141913216](images/image-20240317141913216.png)
+
+## 寻找和创建队伍进行组队
+
+![image-20240317141959441](images/image-20240317141959441.png)
+
+
+
+## 管理个人信息
+
+![image-20240317142028718](images/image-20240317142028718.png)
